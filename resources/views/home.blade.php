@@ -9,13 +9,18 @@
 @section('content')
     <div class="container" style="background-image: url('{{asset('/img/top.jpg')}}');">
         <div class="top-wrapper">
-            <div class="btn-wrapper">
-                <a href="#" class="btn signup">新規登録はこちら</a>
-                <p>or sign up with</p>
-                <a href="#" class="btn google">googleで登録</a>
+            
+            @guest
+                <div class="btn-wrapper">
+                    <a href="{{ route('register') }}" class="btn signup">新規登録はこちら</a>
+                    <p>or sign up with</p>
+                    <a href="#" class="btn google">googleで登録</a>
                 
-            </div>
-
+                </div>
+            @endguest
+            
+            
+            
         </div>
     </div>
 @endsection

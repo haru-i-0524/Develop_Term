@@ -43,11 +43,11 @@ return [
     // ],
     
     // socialite twitter
-    'twitter' => [
-        'client_id' => env('TWITTER_API_KEY'),
-        'client_secret' => env('TWITTER_API_SECRET'),
-        'redirect' => env('TWITTER_CALLBACKURL'),
-    ],
+    // 'twitter' => [
+    //     'client_id' => env('TWITTER_API_KEY'),
+    //     'client_secret' => env('TWITTER_API_SECRET'),
+    //     'redirect' => env('TWITTER_CALLBACKURL'),
+    // ],
     
     // socialite google
     // 'google' => [

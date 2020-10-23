@@ -15,15 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// register
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('auth/register','Auth\RegisterController@register');
 
-// Login
-// 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+//Login
+Route::get('/auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('/auth/login', 'Auth\LoginController@login');
+
+
+// Logout
+Route::get('/auth/logout', 'Auth\LoginController@Logout');
+
 
 // socialite
-Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'google');
-Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'google');
+// Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'google');
+// Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'google');
 
 
 
@@ -86,5 +94,6 @@ Route::get('/mypage', 'ProfileController@index');
 Route::get('/mypage', 'ReportController@index');
 
 
-
-
+// Login
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

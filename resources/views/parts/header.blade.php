@@ -15,21 +15,21 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"></span>Search</a>
+                <a class="nav-link" href="#">Search</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"></span>Recommend</a>
+                <a class="nav-link" href="#">Recommend</a>
             </li>
             
             {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
                         
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></span>SignUp</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link" href=""{{ route('login') }}""></span>{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
             
             {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
@@ -57,4 +57,3 @@
     </div>
 
 </nav>
-
