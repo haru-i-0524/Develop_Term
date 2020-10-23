@@ -1,0 +1,19 @@
+.navbar {
+  font-family: "Ink Free";
+}
+.navbar .navbar-brand {
+  font-size: 60px;
+  margin-left: 5px;
+}
+.navbar .nav-link {
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.fooder {
+  height: 70px;
+}
+.fooder .copyright {
+  color: #777;
+  text-align: center;
+}
