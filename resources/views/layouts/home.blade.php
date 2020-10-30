@@ -45,22 +45,22 @@
         
     </head>
     <body>
-        <div class="col-md-8 mx-auto">
             
-             <!-- header -->
-            @include('parts.header')
-                
-            
-            
-            {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
-            @yield('content')
+        <!-- header -->
+        @include('parts.header')
             
             
             
-            <!-- footer -->
-            @include('parts.fooder')
+        {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
+        @yield('content')
             
-        </div>
+            
+            
+        <!-- footer -->
+        @include('parts.fooder')
+        
+        
+        
     </body>
     
     

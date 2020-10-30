@@ -7,9 +7,10 @@
 
 {{-- home.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
-    <div class="container" style="background-image: url('{{asset('/img/top.jpg')}}');">
-        <div class="top-wrapper">
+    <div class="container mx-auto">
+        <div class=title>
             <p>プロフィール新規作成</p>
         </div>
     </div>
 @endsection
+   

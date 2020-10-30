@@ -42,7 +42,7 @@ class ReportController extends Controller
         
         
         
-        return redirect('admin/report');
+        return redirect('admin/report/edit');
     }
     
     // 5.delete

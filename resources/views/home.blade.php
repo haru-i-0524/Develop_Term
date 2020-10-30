@@ -7,14 +7,16 @@
 
 {{-- home.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
-    <div class="container" style="background-image: url('{{asset('/img/top.jpg')}}');">
-        <div class="top-wrapper">
+    <div class="container mx-auto">
+        <div class="top-wrapper"  style="background-image: url('{{asset('/img/top.jpg')}}');">
             
             @guest
                 <div class="btn-wrapper">
                     <a href="{{ route('register') }}" class="btn signup">新規登録はこちら</a>
                     <p>or sign up with</p>
                     <a href="#" class="btn google">googleで登録</a>
+                    <a href="#" class="btn twitter">Twitterで登録</a>
+                    <a href="#" class="btn facebook">facebookで登録</a>
                 
                 </div>
             @endguest

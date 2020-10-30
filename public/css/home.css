@@ -3,6 +3,12 @@ body {
 }
 
 .container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.top-wrapper {
+  color: white;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -10,18 +16,14 @@ body {
   padding: 180px 0 100px 0;
 }
 
-.top-wrapper {
-  color: white;
-}
-
 .top-wrapper p {
   font-size: 24px;
   font-family: "Ink Free";
-  opacity: 0.7;
+  text-shadow: 0 0 10px #333333;
 }
 
 .btn-wrapper {
-  margin: 20px 0 20px 50px;
+  margin: 20px 50px 20px 50px;
 }
 
 .btn {

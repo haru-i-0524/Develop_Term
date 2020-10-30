@@ -71,9 +71,9 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     
     // --Mypage--
     // Profile 6.index
-    Route::get('mypage', 'Admin\ProfileController@summary');
+    Route::get('mypage', 'Admin\ProfileController@summary')->name('mypage');
     // Report 6.index
-    Route::get('mypage', 'Admin\ReportController@summary');
+    Route::get('mypage', 'Admin\ReportController@summary')->name('mypage');
     
 
     
@@ -89,9 +89,9 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 // Route::get('/', 'ReportController@index')
 
 // userpage <- profile
-Route::get('/userpage', 'ProfileController@index');
+// Route::get('/userpage', 'ProfileController@index');
 // userpage <- report
-Route::get('/userpage', 'ReportController@index');
+// Route::get('/userpage', 'ReportController@index');
 
 
 // Login
