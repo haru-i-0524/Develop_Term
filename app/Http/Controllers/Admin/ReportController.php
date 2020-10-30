@@ -33,7 +33,7 @@ class ReportController extends Controller
         
         
         
-        return view('admin.report.edit', ['report_form' => $profile]);
+        return view('admin.report.edit');
     }
     
     // 4.update
@@ -54,13 +54,20 @@ class ReportController extends Controller
         return redirect('admin/report/');
     }
     
-    // 6.index (Mypage)
+    // 6.index
     public function index(Request $request)
     {
         
         
         
-        return view('admin.report.index', ['posts' => $posts, 'cond_name' => $cond_name]);
+        return view('admin.report.index');
+    }
+    
+    // 7.summary(Mypage)
+    public function summary(Request $request)
+    {
+        
+        return view('admin.mypage');
     }
     
 }

@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link" href="#">{{ __('Search') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Recommend</a>
+                <a class="nav-link" href="#">{{ __('Recommend') }}</a>
             </li>
             
             {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
@@ -40,6 +40,9 @@
                     </a>
                     
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="admin/mypage">
+                            {{ __('Mypage') }}
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

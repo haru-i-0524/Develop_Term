@@ -33,7 +33,7 @@ class ProfileController extends Controller
         
         
         
-        return view('admin.profile.edit', ['profile_form' => $profile]);
+        return view('admin.profile.edit');
     }
     
     // 4.update
@@ -59,9 +59,15 @@ class ProfileController extends Controller
     {
         
         
-        return view('admin.profile.index', ['posts' => $posts, 'cond_name' => $cond_name]);
+        return view('admin.profile.index');
     }
     
+     // 7.summary(Mypage)
+    public function summary(Request $request)
+    {
+        
+        return view('admin.mypage');
+    }
     
     
 }
