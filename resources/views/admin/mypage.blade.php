@@ -10,6 +10,10 @@
    <div class="container mx-auto">
         <div class=title>
             <p>マイページ</p>
+            <ul class="link">
+                <li><a class="link" href="{{ action('Admin\ProfileController@add') }}">新規作成</a></li>
+                <li><a class="link" href="{{ action('Admin\ProfileController@edit') }}">編集</a></li>
+            </ul>
         </div>
     </div>
 @endsection

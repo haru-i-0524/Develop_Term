@@ -45,6 +45,25 @@ class User extends Authenticatable
     }
     
     
+    // gender 定義
+    public function getGenderStirng() {
+        $gender;
+        if($this->gender == 1){
+            $gender = "male";
+        } else if ($this->gender == 2){
+            $gender = "female";
+        } else if ($this->gender == 9){
+            $gender = "other";
+        } else {
+            $gender = "unanswered";
+        }
+        
+        return $gender;
+    }
    
+   public function profiles() 
+   {
+       return $this->hasMany('App\Profile');
+   }
     
 }

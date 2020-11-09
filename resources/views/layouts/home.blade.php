@@ -12,7 +12,7 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
-         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
+        {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
@@ -27,7 +27,11 @@
         {{-- headerのCSS --}}
         <link href="{{ secure_asset('css/parts.css') }}" rel="stylesheet">
         {{-- imgを読み込む --}}
-        <link src="{{ asset('img') }}">        
+        <link src="{{ asset('img') }}">
+        {{-- プロフィール写真　保存場所 --}}
+        <link src="{{ asset('img/profile') }}">
+        {{-- レポート写真　保存場所 --}}
+        <link src="{{ asset('img/report') }}">
         {{--  FontAwesomeのCSSファイルを読み込む--}}
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel="stylesheet">
     
