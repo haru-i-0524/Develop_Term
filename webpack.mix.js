@@ -18,5 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/home.scss', 'public/css')
     // parts.scss
     .sass('resources/sass/parts.scss', 'public/css')
+    // profile.scss
+    .sass('resources/sass/profile.scss', 'public/css')
     
     .options({processCssUrls: false});

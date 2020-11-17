@@ -18,11 +18,11 @@
                     
                     <p>or sign up with</p>
                     <!-- ソーシャルログイン socialite -->
-                    <a href="#" class="btn google"><span class="fab fa-google"></span>googleで登録</a>
+                    <a href="" class="btn google"><span class="fab fa-google"></span>googleで登録</a>
                     
-                    <a href="#" class="btn twitter"><span class="fab fa-twitter"></span>Twitterで登録</a>
+                    <a href="" class="btn twitter"><span class="fab fa-twitter"></span>Twitterで登録</a>
                     
-                    <a href="#" class="btn facebook"><span class="fab fa-facebook-f"></span>facebookで登録</a>
+                    <a href="" class="btn facebook"><span class="fab fa-facebook-f"></span>facebookで登録</a>
                 
                 </div>
             @endguest

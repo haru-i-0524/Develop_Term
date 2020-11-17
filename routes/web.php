@@ -73,7 +73,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     // Profile 6.index
     Route::get('mypage', 'Admin\ProfileController@summary')->name('mypage');
     // Report 6.index
-    Route::get('mypage', 'Admin\ReportController@summary')->name('mypage');
+    // Route::get('mypage', 'Admin\ReportController@summary')->name('mypage');
     
 
     

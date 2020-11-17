@@ -16,10 +16,10 @@
                     <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Search') }}</a>
+                    <a class="nav-link" href="">{{ __('Search') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Recommend') }}</a>
+                    <a class="nav-link" href="">{{ __('Recommend') }}</a>
                 </li>
             
                 {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
@@ -36,12 +36,12 @@
                 {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
                 @else       
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                     
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('mypage') }}">
+                            <a class="dropdown-item" href="{{ route('mypage',['user_id' => Auth::id()]) }}">
                                 {{ __('Mypage') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"

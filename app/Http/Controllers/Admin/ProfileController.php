@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $this->validate($request, Profile::$rules);
         
         // ログインしているユーザーIDを取得
-        $profile->user_id = User::find('id');
+        $user_id = Auth::id();
         
         $profile = new Profile;
         $form = $request->all();
@@ -59,37 +59,80 @@ class ProfileController extends Controller
         // profile_image　削除
         unset($form['profile_image']);
         
+        // $proifileのデータにuser_idの情報を追加。fill(form)は入力した情報のみのため…
+        $profile->user_id = $user_id;
+        
         // データベースに保存
         $profile->fill($form);
         $profile->save();    
         
-        return redirect('admin/profile/create');
+        return redirect('admin/mypage');
     }
     
     
     // 3.edit
     public function edit(Request $request)
     {
+        $profile = Profile::find($request->id);
         
+        $prefecture = Prefecture::where('code', $profile->pref_code)->first();
         
+        $prefectures = Prefecture::all();
         
-        return view('admin.profile.edit');
+        return view('admin.profile.edit', [ 'profile_form' => $profile, 'prefecture' => $prefecture, 'prefectures' => $prefectures]);
     }
     
     // 4.update
     public function update(Request $request)
     {
         
+        // ログインしているユーザーIDを取得
+        $user_id = Auth::id();
+        
+        // Varidationを行う
+        $this->validate($request, Profile::$rules);
+        // Profile Modelから該当するuser_idのデータを取得
+        
+        $profile = Profile::find($request->id); 
+        
+        // 送信されてきたフォームデータを格納する
+        $profile_form = $request->all();
+        
+        // prefectureについての条件分岐
+        if ($request->pref_code) {
+            $profile_form['pref_code'] = $request->pref_code;
+        } else {
+            $profile_form['pref_code'] = $prefecture->code;
+        }
+        
+        // profile_imageについての条件分岐
+        if ($request->remove == 'true') {
+            $profile_form['image_path'] = null;
+        } elseif ($request->file('profile_image')) {
+            $path = $request->file('profile_image')->store('public/img/profile');
+            $profile_form['image_path'] = basename($path);
+        } else {
+            $profile_form['image_path'] = $profile->image_path;
+        }
+        
+        // フォームから送信されてきた情報を削除
+        // profile_image　削除
+        unset($profile_form['profile_image']);
+        // remove　削除
+        unset($profile_form['remove']);
+        // _token　削除
+        unset($profile_form['_token']);
+        
+        $profile->fill($profile_form)->save();
         
         
-        return redirect('admin/profile/edit');
+        return redirect('admin/mypage?user_id='. $profile->user_id);
     }
 
     // 5.delete
     public function delete(Request $request)
     {
-        
-      
+        $profile = Profile::find($request->user_id);
         
         return redirect('admin/profile/');
     }
@@ -97,17 +140,27 @@ class ProfileController extends Controller
     // 6.index (Mypage)
     public function index(Request $request)
     {
+    
         
         
-        return view('admin.profile.index');
+        return view('admin.profile.index', ['profile' => $profile]);
     }
     
      // 7.summary(Mypage)
     public function summary(Request $request)
     {
+        // ログインしているユーザーIDを取得
+        $user_id = Auth::id();
+        // Profilesからuser_idを検索
+        $profile = Profile::find($request->user_id);
         
-        return view('admin.mypage');
+        // Prefectureモデルから該当するcodeの情報を取得
+        $prefecture = Prefecture::where('code', $profile->pref_code)->first();
+            
+        return view('admin.mypage', ['prefecture' => $prefecture, 'profile' => $profile]);
+        
     }
+    
     
     
     

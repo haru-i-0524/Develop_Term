@@ -26,6 +26,8 @@
         <link href="{{ secure_asset('css/home.css') }}" rel="stylesheet">
         {{-- headerのCSS --}}
         <link href="{{ secure_asset('css/parts.css') }}" rel="stylesheet">
+        {{-- profileのCSS --}}
+        <link href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
         {{-- imgを読み込む --}}
         <link src="{{ asset('img') }}">
         {{-- プロフィール写真　保存場所 --}}
