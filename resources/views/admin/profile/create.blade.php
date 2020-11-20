@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     
-                    <!-- prefecture 県 -->
+                    <!-- prefecture 都道府県 -->
                     <div class="form-group row">
                         <label class="col-md-2">都道府県</label>
                         <div class="col-md-8">

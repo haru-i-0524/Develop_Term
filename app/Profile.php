@@ -41,6 +41,11 @@ class Profile extends Model
         return $gender;
     }
 
+    // ProfileモデルとProfiehistoryモデルを関連付ける
+    public function profilehistories()
+    {
+        return $this->hasmany('App\Profilehistory');
+    }
 
    
 }

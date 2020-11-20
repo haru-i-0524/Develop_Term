@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Prefecture;
 use App\Profile;
-
+use App\Profilehistory;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -29,7 +30,7 @@ class ProfileController extends Controller
     {
         $prefectures = Prefecture::all();
         
-        return view('admin.profile.create', ['prefectures' => $prefectures]);
+        return view('admin.profile.create', ['prefectures=> $prefectures']);
     }
     
     
@@ -91,8 +92,8 @@ class ProfileController extends Controller
         
         // Varidationを行う
         $this->validate($request, Profile::$rules);
-        // Profile Modelから該当するuser_idのデータを取得
         
+        // Profile Modelから該当するuser_idのデータを取得
         $profile = Profile::find($request->id); 
         
         // 送信されてきたフォームデータを格納する
@@ -125,6 +126,12 @@ class ProfileController extends Controller
         
         $profile->fill($profile_form)->save();
         
+        // 編集履歴
+        $profilehistory = new Profilehistory;
+        $profilehistory->profile_id = $profile->id;
+        $profilehistory->edited_at = Carbon::now();
+        $profilehistory->save();
+        
         
         return redirect('admin/mypage?user_id='. $profile->user_id);
     }
@@ -156,6 +163,8 @@ class ProfileController extends Controller
         
         // Prefectureモデルから該当するcodeの情報を取得
         $prefecture = Prefecture::where('code', $profile->pref_code)->first();
+        
+        
             
         return view('admin.mypage', ['prefecture' => $prefecture, 'profile' => $profile]);
         
