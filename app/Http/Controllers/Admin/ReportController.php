@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Prefecture;
 use App\Report;
-use App\Reportphoto;
+use App\ReportPhoto;
 
 class ReportController extends Controller
 {
@@ -42,47 +42,45 @@ class ReportController extends Controller
         $user_id = Auth::id();
         
         $report = new Report;
-        $form = $request->all();
         
-        // フォームから送信されてきた情報を削除
-        // _token　削除
-        unset($form['_token']);
-        
-        // データベースに保存
-        // $report
-        $report->fill($form)->save();
-        
-        
-        $images = array();
-        // file('report_image')にデータがあるときだけ処理する
-        if ($files = $request->file('images')) {
-            // 
-            foreach ( $images as $image ) {
-                
-                $report_photo = new Reportphoto;
-                
-                $path = $request->file()->store('public/img/report');
-                $report_photo->report_path = basename($path);
-                
-                // フォームから送信されてきた情報を削除
-                // profile_image　削除
-                unset($form['report_image']);
-            }
-        }
-        
-        
-        
-        // $reportのデータにuser_idの情報を追加
+        $report->shop_name = $request->shop_name;
+        $report->postal_code = $request->postal_code;
+        $report->pref_code = $request->pref_code;
+        $report->city = $request->city;
+        $report->address = $request->address;
+        $report->tel = $request->tel;
+        $report->url = $request->url;
+        $report->title = $request->title;
+        $report->body = $request->body;
         $report->user_id = $user_id;
         
-        dd($request);
-        // データベースに保存
-        // $report
-        // $report-> ->save();
-        // $report_photo
-        // $report_photo-> ->save();
+        $report->save();
         
-        return redirect('admin/report/create');
+    
+        $photos = $request['report_image'];
+        $photo_names = $request['img_name'];
+        
+        if( $photos != null ) {
+            
+            for($i = 0; $i < count($photos); $i++){
+                
+                if ($photos[$i]->isValid()) {
+                
+                    $path = $photos[$i]->store('public/img/report');
+                    
+                    $report_photo = new ReportPhoto;
+                    
+                    $report_photo->report_path = basename($path);
+                
+                    $report_photo->report_id = $report->id;
+                    $report_photo->img_name = $photo_names[$i];
+                    $report_photo->save();
+                }  
+            }
+        
+        }
+    
+        return redirect('admin/mypage?user_id='. $user_id);
     }
     
     
@@ -91,6 +89,7 @@ class ReportController extends Controller
     {
         
         
+        // $report = Report::where('reportid', )->
         
         return view('admin.report.edit');
     }
@@ -116,17 +115,11 @@ class ReportController extends Controller
     // 6.index
     public function index(Request $request)
     {
-        
+       
         
         
         return view('admin.report.index');
     }
     
-    // 7.summary(Mypage)
-    public function summary(Request $request)
-    {
-        
-        return view('admin.mypage');
-    }
     
 }

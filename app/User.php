@@ -61,9 +61,15 @@ class User extends Authenticatable
         return $gender;
     }
    
-   public function profiles() 
+   public function profile() 
    {
-       return $this->hasMany('App\Profile');
+       return $this->hasOne('App\Profile');
    }
+
+    public function reports() 
+    {
+        return $this->hasMany('App\Report');
+        
+    }
     
 }

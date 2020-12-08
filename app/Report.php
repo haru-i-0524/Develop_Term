@@ -11,7 +11,7 @@ class Report extends Model
     
     public static $rules = array(
       'shop_name' => 'required',
-      'prefecture' => 'required',
+      'pref_code' => 'required',
       'city' => 'required',
       'title' => 'required',
       'body' => 'required',
@@ -20,7 +20,7 @@ class Report extends Model
     
     public function photos()
     {
-      return $thin->hasMany('App\Reportphoto');
+      return $this->hasMany('App\ReportPhoto');
     }
 }
 

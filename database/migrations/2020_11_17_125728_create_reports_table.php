@@ -24,9 +24,8 @@ class CreateReportsTable extends Migration
             $table->string('shop_name');
             // postal_code
             $table->string('postal_code')->nullable();
-            // pref_codeとprefecture
+            // pref_code
             $table->unsignedInteger('pref_code');
-            $table->string('prefecture');
             // city
             $table->string('city');
             // address 番地以下

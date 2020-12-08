@@ -30,7 +30,7 @@ class ProfileController extends Controller
     {
         $prefectures = Prefecture::all();
         
-        return view('admin.profile.create', ['prefectures=> $prefectures']);
+        return view('admin.profile.create', ['prefectures' => $prefectures]);
     }
     
     
@@ -42,6 +42,8 @@ class ProfileController extends Controller
         
         // ログインしているユーザーIDを取得
         $user_id = Auth::id();
+        
+        $prefectures = Prefecture::all();
         
         $profile = new Profile;
         $form = $request->all();
@@ -67,14 +69,17 @@ class ProfileController extends Controller
         $profile->fill($form);
         $profile->save();    
         
-        return redirect('admin/mypage');
+        return redirect('admin/mypage?user_id='. $profile->user_id);
     }
     
     
     // 3.edit
     public function edit(Request $request)
     {
-        $profile = Profile::find($request->id);
+        // ログインしているユーザーIDを取得
+        $user_id = Auth::id();
+        
+        $profile = Profile::where('user_id', $user_id)->first();
         
         $prefecture = Prefecture::where('code', $profile->pref_code)->first();
         
@@ -93,8 +98,8 @@ class ProfileController extends Controller
         // Varidationを行う
         $this->validate($request, Profile::$rules);
         
-        // Profile Modelから該当するuser_idのデータを取得
-        $profile = Profile::find($request->id); 
+        // Profile Modelから該当するidのデータを取得
+        $profile = Profile::where('user_id', $user_id)->first();
         
         // 送信されてきたフォームデータを格納する
         $profile_form = $request->all();
@@ -139,38 +144,15 @@ class ProfileController extends Controller
     // 5.delete
     public function delete(Request $request)
     {
-        $profile = Profile::find($request->user_id);
-        
-        return redirect('admin/profile/');
-    }
-    
-    // 6.index (Mypage)
-    public function index(Request $request)
-    {
-    
-        
-        
-        return view('admin.profile.index', ['profile' => $profile]);
-    }
-    
-     // 7.summary(Mypage)
-    public function summary(Request $request)
-    {
-        // ログインしているユーザーIDを取得
         $user_id = Auth::id();
-        // Profilesからuser_idを検索
-        $profile = Profile::find($request->user_id);
         
-        // Prefectureモデルから該当するcodeの情報を取得
-        $prefecture = Prefecture::where('code', $profile->pref_code)->first();
+        $profile = Profile::where('user_id', $user_id)->first();
         
+        $profile->delete();
         
-            
-        return view('admin.mypage', ['prefecture' => $prefecture, 'profile' => $profile]);
-        
+        return redirect('admin/mypage?user_id='. $profile->user_id);
     }
     
-    
-    
+   
     
 }

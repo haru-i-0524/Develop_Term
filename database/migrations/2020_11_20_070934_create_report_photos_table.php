@@ -20,6 +20,8 @@ class CreateReportPhotosTable extends Migration
             $table->unsignedBiginteger('report_id');
             // 外部キー制約 'reports'テーブルの'id'を'report_id'とする
             $table->foreign('report_id')->references('id')->on('reports');
+            // コメント
+            $table->string('img_name');
             // 写真 
             $table->string('report_path');
             

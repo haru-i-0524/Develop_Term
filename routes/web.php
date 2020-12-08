@@ -30,8 +30,8 @@ Route::get('/auth/logout', 'Auth\LoginController@Logout');
 
 
 // socialite
-// Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'google');
-// Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'google');
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->where('social', 'google');
+Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'google');
 
 
 
@@ -70,12 +70,8 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 
     
     // --Mypage--
-    // Profile 6.index
-    Route::get('mypage', 'Admin\ProfileController@summary')->name('mypage');
-    // Report 6.index
-    // Route::get('mypage', 'Admin\ReportController@summary')->name('mypage');
-    
-
+    // Mypege index
+    Route::get('mypage', 'Admin\MypageController@index')->name('mypage');
     
 });
 

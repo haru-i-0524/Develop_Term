@@ -29,6 +29,8 @@ class RegionsSeeder extends Seeder
             ['name' => '四国地方'],
             // region_id = 8
             ['name' => '九州地方'],
+            // region_id = 9
+            ['name' => '未登録'],
         ]);
     }
 }

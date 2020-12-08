@@ -56,7 +56,7 @@
                         <label class="col-md-2">都道府県</label>
                         <div class="col-md-8">
                             <select name="pref_code">
-                                <option value="{{ $profile_form->pref_code}}" selected>{{ $prefecture->name }}</option>
+                                <option value="{{ $profile_form->pref_code }}" selected>{{ $prefecture->name }}</option>
                                 @foreach($prefectures as $prefecture)
                                     <option value="{{ $prefecture->code }}">{{ $prefecture->name }}</option>
                                 @endforeach

@@ -60,6 +60,7 @@ class PrefecturesSeeder extends Seeder
             ['region_id' => 8, 'code' => 45, 'name' => '宮崎県'],
             ['region_id' => 8, 'code' => 46, 'name' => '鹿児島県'],
             ['region_id' => 8, 'code' => 47, 'name' => '沖縄県'],
+            ['region_id' => 9, 'code' => 48, 'name' => '未登録'],
         ]);
     }
 }

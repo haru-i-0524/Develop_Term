@@ -40,18 +40,59 @@ body {
 
 .google {
   background-color: #DD4B39;
-  margin-right: 10px;
+  margin: 0px 10px 10px 0px;
 }
 
 .twitter {
   background-color: #1DA1F2;
-  margin-right: 10px;
+  margin: 0px 10px 10px 0px;
 }
 
 .facebook {
   background-color: #1877f2;
+  margin: 0px 10px 10px 0px;
 }
 
 .fab {
   margin-right: 5px;
+}
+
+.profile_add {
+  background-color: #fbd575;
+  margin: 0px 10px 10px 0px;
+}
+
+.profile_btn .profile_edit {
+  background-color: #93c0b7;
+  margin: 0px 20px 20px 0px;
+}
+.profile_btn .profile_delete {
+  background-color: #9e9890;
+  margin: 0px 20px 20px 0px;
+  float: right;
+}
+.profile_btn .profile_delete after {
+  clear: both;
+  display: block;
+  sontent: " ";
+}
+
+.report_add {
+  background-color: #fbd575;
+  margin: 0px 10px 10px 0px;
+}
+
+.report_btn .report_edit {
+  background-color: #93c0b7;
+  margin: 0px 20px 20px 0px;
+}
+.report_btn .report_delete {
+  background-color: #9e9890;
+  margin: 0px 20px 20px 0px;
+  float: right;
+}
+.report_btn .report_delete after {
+  clear: both;
+  display: block;
+  sontent: " ";
 }
